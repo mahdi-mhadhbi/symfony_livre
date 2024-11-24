@@ -1,0 +1,8 @@
+# config/packages/vich_uploader.yaml
+vich_uploader:
+  db_driver: orm  # Set to 'orm' if using Doctrine ORM
+  mappings:
+    livre_images:
+      uri_prefix: /uploads/livres  # The URL prefix for the uploaded files
+      upload_destination: '%kernel.project_dir%/public/uploads/livres'  # The physical directory to store files
+      namer: Vich\UploaderBundle\Naming\SmartUniqueNamer  # Generate unique names for the uploaded files
