@@ -16,6 +16,28 @@ class CategoriesRepository extends ServiceEntityRepository
         parent::__construct($registry, Categories::class);
     }
 
+    public function findByEditorIds(array $editorIds)
+    {
+        return $this->createQueryBuilder('c')
+            ->innerJoin('c.livres', 'l')
+            ->innerJoin('l.editeur', 'e')
+            ->where('e.id IN (:editorIds)')
+            ->setParameter('editorIds', $editorIds)
+            ->getQuery()
+            ->getResult();
+    }
+public function findWithLivresAndEditeurs(int $id): ?Categories
+{
+    return $this->createQueryBuilder('c')
+        ->leftJoin('c.livres', 'l')
+        ->leftJoin('l.editeur', 'e')
+        ->addSelect('l', 'e') // Eager load `livres` and `editeurs`
+        ->where('c.id = :id')
+        ->setParameter('id', $id)
+        ->getQuery()
+        ->getOneOrNullResult();
+}
+
     //    /**
     //     * @return Categories[] Returns an array of Categories objects
     //     */

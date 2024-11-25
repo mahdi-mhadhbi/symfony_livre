@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<main>
+
     <!-- Hero area Start-->
     <div class="container">
         <div class="row">
@@ -30,26 +30,13 @@
                                 <div class="small-tittle mb-20">
                                     <h4>Filter by Genres</h4>
                                 </div>
-                                <label class="container">History
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="container">Horror - Thriller
-                                    <input type="checkbox" checked="checked active">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="container">Love Stories
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="container">Science Fiction
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="container">Biography
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
+                                {% for categorie in categories %}
+                                    <label class="container">{{ categorie.designation }}
+                                        <input type="checkbox" name="categories[]" value="{{ categorie.id }}">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                {% endfor %}
+
                             </div>
                             <!-- select-Categories End -->
 
@@ -92,28 +79,15 @@
                             <!-- select-Categories start -->
                             <div class="select-Categories pt-100 pb-60">
                                 <div class="small-tittle mb-20">
-                                    <h4>Filter by Publisher</h4>
+                                    <h4>Filter by Editeur</h4>
                                 </div>
-                                <label class="container">Green Publications
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="container">Anondo Publications
-                                    <input type="checkbox" checked="checked active">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="container">Rinku Publications
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="container">Sheba Publications
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="container">Red Publications
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
+                                {% for editor in editors %}
+                                    <label class="container">{{ editor.nom }}
+                                        <input type="checkbox" name="editeurs[]" value="{{ editor.id }}">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                {% endfor %}
+
                             </div>
                             <!-- select-Categories End -->
                             <!-- select-Categories start -->
@@ -121,26 +95,12 @@
                                 <div class="small-tittle mb-20">
                                     <h4>Filter by Author Name</h4>
                                 </div>
-                                <label class="container">Buster Hyman
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="container">Phil Harmonic
-                                    <input type="checkbox" checked="checked active">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="container">Cam L. Toe
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="container">Otto Matic
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="container">Juan Annatoo
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
+                                {% for author in authors %}
+                                    <label class="container">{{ author.nom ~ ' ' ~ author.prenom}}
+                                        <input type="checkbox" name="editeurs[]" value="{{ author.id }}">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                {% endfor %}
                             </div>
                             <!-- select-Categories End -->
                         </div>

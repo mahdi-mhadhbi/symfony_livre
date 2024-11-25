@@ -4,6 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Editeur;
 use App\Form\EditeurType;
+<<<<<<< HEAD
+=======
+use App\Repository\EditeurRepository;
+use App\Repository\LivreRepository;
+>>>>>>> wassim/main
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,6 +19,7 @@ use Symfony\Component\Routing\Attribute\Route;
 final class EditeurController extends AbstractController
 {
     #[Route(name: 'app_editeur_index', methods: ['GET'])]
+<<<<<<< HEAD
     public function index(EntityManagerInterface $entityManager): Response
     {
         $editeurs = $entityManager
@@ -22,6 +28,12 @@ final class EditeurController extends AbstractController
 
         return $this->render('editeur/index.html.twig', [
             'editeurs' => $editeurs,
+=======
+    public function index(EditeurRepository $editeurRepository): Response
+    {
+        return $this->render('editeur/index.html.twig', [
+            'editeurs' =>  $editeurRepository->findAll(),
+>>>>>>> wassim/main
         ]);
     }
 

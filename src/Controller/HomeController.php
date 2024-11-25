@@ -12,6 +12,7 @@ class HomeController extends AbstractController
     #[Route('/home', name: 'app_home')]
     public function index(LivreRepository $livreRepository): Response
     {
+<<<<<<< HEAD
 
         $categories = [ 
             'Romance' => $livreRepository->findLatestBooksByCategoryName('Romance'),
@@ -31,6 +32,10 @@ class HomeController extends AbstractController
     {
         return $this->render('livre/show.html.twig', [
             'livre' => $livre,
+=======
+        return $this->render('home/index.html.twig', [
+            'livres' => $livreRepository->findAll(),
+>>>>>>> wassim/main
         ]);
     }
 }
