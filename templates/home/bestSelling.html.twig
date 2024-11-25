@@ -15,8 +15,8 @@
                     <div class="properties pb-20">
                         <div class="properties-card">
                             <div class="properties-img">
-                               <img src="{{ asset('uploads/livres/' ~ livre.image) }}" alt="{{ livre.titre }}">
-                                </a>
+                              <a href="{{ path('app_livre_show', {'id': livre.id}) }}"> <img src="{{ asset('uploads/livres/' ~ livre.image) }}" alt="{{ livre.titre }}"></a>
+                                
                             </div>
                             <div class="properties-caption">
                                 <p>{{ livre.auteurs|first }}</p><!-- Assuming 'auteur' is a relation in 'livre' -->

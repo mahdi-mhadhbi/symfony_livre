@@ -90,4 +90,26 @@ class LivreRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findLatestBooks(): array
+    {
+        return $this->createQueryBuilder('l')
+            ->orderBy('l.id', 'DESC') // Assuming 'id' increments with new entries. Replace with 'createdAt' if available.
+            ->setMaxResults(4)       // Limit to the latest 4 books
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findLatestBooksByCategoryName(string $categoryName): array
+{
+    return $this->createQueryBuilder('l')
+        ->join('l.categories', 'c')
+        ->andWhere('c.designation = :designation')
+        ->setParameter('designation', $categoryName)
+        ->orderBy('l.id', 'DESC') 
+        ->getQuery()
+        ->getResult();
+}
+
+
 }
